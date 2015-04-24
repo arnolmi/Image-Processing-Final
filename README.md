@@ -1,0 +1,1 @@
+This is just a dumping ground for the final exam for my digital image processing course.  If you use this software for anything remotely serious you are insane, unless you really do need to find a grey box in a noisy grey background.
