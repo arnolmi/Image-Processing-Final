@@ -1,14 +1,12 @@
 # 2015.04.24 01:21:19 CDT
 import cv2
 import WrapperFactory
-from Smoothing import *
-from Declarations import *
-from Thresholding import IterativeThreshold
+
 
 class ThresholdHelper(object):
-
-    def run(self, img, method, _min = 0, _max = 255):
+    def run(self, img, method, _min=0, _max=255):
         return cv2.threshold(img, _min, _max, method)
+
 
 class ImageProcessor(object):
 
@@ -20,15 +18,19 @@ class ImageProcessor(object):
 
     def generateBinaryImage(self, procedure):
         """
-            Currently Procedure doesn't hold arguments, but if needed put some arguments in the procedure List
+            Currently Procedure doesn't hold arguments,
+            but if needed put some arguments in the procedure
+            List
         """
         for wrapper, args in procedure:
             working, result = (None, None)
             if args is None:
-                working, result = WrapperFactory.operationFactory(wrapper).run(self.working)
+                working, result = WrapperFactory.operationFactory(wrapper)\
+                    .run(self.working)
             else:
-                working, result = WrapperFactory.operationFactory(wrapper).run(self.working, **args)
-            if working != None:
+                working, result = WrapperFactory.operationFactory(wrapper)\
+                    .run(self.working, **args)
+            if working is not None:
                 self.working = working
-            if result != None:
+            if result is not None:
                 self.result = result

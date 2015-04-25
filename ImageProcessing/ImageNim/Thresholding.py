@@ -2,9 +2,10 @@
 import cv2
 import numpy as np
 
+
 class IterativeThreshold(object):
 
-    def run(self, img, delta = 5):
+    def run(self, img, delta=5):
         img = cv2.GaussianBlur(img, (5, 5), 0)
         T1 = np.average(img)
         while True:
@@ -24,4 +25,3 @@ class IterativeThreshold(object):
             if abs(T2 - T1) < delta:
                 return tempImage
             T1 = T2
-
